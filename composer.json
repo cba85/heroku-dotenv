@@ -11,5 +11,8 @@
   "require": {
     "php": ">=7.3",
     "symfony/console": "^5.2"
-  }
+  },
+  "bin": [
+    "heroku-dotenv"
+  ]
 }
