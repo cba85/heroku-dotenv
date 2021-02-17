@@ -89,7 +89,7 @@ class HerokuDotenv
         unset($dotenvVars[0]); // Remove first line
 
         foreach ($dotenvVars as $dotenvVarsKey => $dotenvVar) {
-            $vars = explode(': ', $dotenvVar);
+            $vars = explode(': ', $dotenvVar, 2);
             foreach ($vars as $key => $var) {
                 if (empty($var)) {
                     unset($dotenvVars[$dotenvVarsKey]); // Remove last line
@@ -113,10 +113,12 @@ class HerokuDotenv
         $dotenvVars = explode("\n", $this->dotenvFileContents);
 
         foreach ($dotenvVars as $dotenvVar) {
-            $dotenvValues = explode('=', $dotenvVar);
+            if (!empty($dotenvVar)) {
+                $dotenvValues = explode('=', $dotenvVar, 2);
 
-            if (!isset($dotenvValues[1])) {
-                return false;
+                if (!isset($dotenvValues[1])) {
+                    return false;
+                }
             }
         }
 
