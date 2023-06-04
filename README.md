@@ -43,7 +43,7 @@ Go to your project folder that contains a `.env` file.
 ### Send .env file to Heroku environment
 
 ```bash
-$ heroku-dotenv push heroku_app_name
+$ heroku-dotenv push -a heroku_app_name
 ```
 
 ### Save Heroku environment to .env file
